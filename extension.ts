@@ -17,21 +17,36 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 
-import GLib from "gi://GLib";
 import { Extension } from "resource:///org/gnome/shell/extensions/extension.js";
+import * as Main from "resource:///org/gnome/shell/ui/main.js";
 
-export default class HelloWorldExtension extends Extension {
+export default class DisableUpdatesExtension extends Extension {
+  private updatesDisabled = false;
+  private extensionManagerWasPatched = false;
+
   override enable(): void {
-    const settings = this.getSettings();
-    // eslint-disable-next-line functional/no-conditional-statements
-    if (settings.get_boolean("say-hello")) {
-      const user = GLib.get_user_name();
-      console.log(`Hello ${user} from ${this.metadata.name}`);
+    if (!this.extensionManagerWasPatched) {
+      this.extensionManagerWasPatched = true;
+      Object.defineProperty(Main.extensionManager, "updatesSupported", {
+        get: () => {
+          if (this.updatesDisabled) {
+            console.log(`Extension updates disabled by ${this.metadata.uuid}`);
+            return false;
+          } else {
+            return (
+              (Object.getOwnPropertyDescriptor(
+                Object.getPrototypeOf(Main.extensionManager),
+                "updatesDisabled",
+              )?.get?.bind(Main.extensionManager)() as boolean | undefined) ??
+              false
+            );
+          }
+        },
+      });
     }
   }
 
   override disable(): void {
-    const user = GLib.get_user_name();
-    console.log(`Goodbye ${user} from ${this.metadata.name}`);
+    this.updatesDisabled = false;
   }
 }
