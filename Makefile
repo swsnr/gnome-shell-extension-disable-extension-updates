@@ -2,14 +2,9 @@ PREFIX = /usr/local
 DESTDIR =
 HOME-DESTDIR = $(HOME)/.local/share/gnome-shell/extensions/$(UUID)
 
-UUID = typescript-template@swsnr.de
+UUID = disable-extension-updates@swsnr.de
 
 DIST-EXTRA-SRC = LICENSE-GPL2 LICENSE-MPL2
-BLUEPRINTS = $(addprefix ui/,about.blp)
-UIDEFS = $(addsuffix .ui,$(basename $(BLUEPRINTS)))
-
-$(UIDEFS): %.ui: %.blp
-	blueprint-compiler compile --output $@ $<
 
 .PHONY: generate
 generate:
@@ -32,14 +27,14 @@ fix: format
 	npm run lint -- --fix
 
 .PHONY: compile
-compile: $(UIDEFS)
+compile:
 	npm run compile
 
 .PHONY: dist
 dist: compile
 	mkdir -p ./dist/
 	gnome-extensions pack --force --out-dir dist \
-		$(addprefix --extra-source=,$(DIST-EXTRA-SRC) $(UIDEFS))
+		$(addprefix --extra-source=,$(DIST-EXTRA-SRC))
 
 # Make a reproducible dist package
 .PHONY: dist-repro
@@ -64,12 +59,8 @@ install-system: dist
 		$(DESTDIR)/$(PREFIX)/share/glib-2.0/schemas
 	bsdtar -xf dist/$(UUID).shell-extension.zip \
 		-C $(DESTDIR)/$(PREFIX)/share/gnome-shell/extensions/$(UUID) --no-same-owner
-	mv $(DESTDIR)/$(PREFIX)/share/gnome-shell/extensions/$(UUID)/schemas/*.gschema.xml \
-		$(DESTDIR)/$(PREFIX)/share/glib-2.0/schemas
-	rm -rf $(DESTDIR)/$(PREFIX)/share/gnome-shell/extensions/$(UUID)/schemas
 
 .PHONY: uninstall-system
 uninstall-system:
 	rm -rf \
 		$(DESTDIR)/$(PREFIX)/share/gnome-shell/extensions/$(UUID) \
-		$(DESTDIR)/$(PREFIX)/share/glib-2.0/schemas/org.gnome.shell.extensions.swsnr-utc-clock.gschema.xml
