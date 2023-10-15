@@ -2,6 +2,9 @@
 
 Disable GNOME Shell's automatic extension update check, the hacky way.
 
+In lieu of any official switch (see [#2514](https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/2514))
+we just delicate surgery (aka blatant hackery) to excise the update check from GNOME shell.
+
 ## Installation
 
 Download the latest ZIP file from [releases](https://github.com/swsnr/gnome-shell-extension-disable-extension-updates/releases),
