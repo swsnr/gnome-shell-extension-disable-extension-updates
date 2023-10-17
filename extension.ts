@@ -17,7 +17,10 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 
-import { Extension, ExtensionMetadata } from "resource:///org/gnome/shell/extensions/extension.js";
+import {
+  Extension,
+  ExtensionMetadata,
+} from "resource:///org/gnome/shell/extensions/extension.js";
 import * as Main from "resource:///org/gnome/shell/ui/main.js";
 
 /**
@@ -145,10 +148,9 @@ export default class DisableUpdatesExtension extends Extension {
       console.log(
         `Extension ${this.metadata.uuid} enabling, monkey-patching extension Main.extensionManager.updatesSupported to disable automatic updates`,
       );
-this.extensionState = new EnabledExtension(this.metadata);
-this.extensionState.patchExtensionManager();
+      this.extensionState = new EnabledExtension(this.metadata);
+      this.extensionState.patchExtensionManager();
     }
-
   }
 
   override disable(): void {
