@@ -17,7 +17,7 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 
-import { Extension } from "resource:///org/gnome/shell/extensions/extension.js";
+import { Extension, ExtensionMetadata } from "resource:///org/gnome/shell/extensions/extension.js";
 import * as Main from "resource:///org/gnome/shell/ui/main.js";
 
 /**
@@ -77,15 +77,39 @@ class PropertyManager {
 }
 
 /**
- * Disable extension updates with some monkey-patching trickery.
+ * Track the state of an enabled extension
  */
-export default class DisableUpdatesExtension extends Extension {
+class EnabledExtension {
   private readonly propertyManager = new PropertyManager();
+  private readonly metadata: ExtensionMetadata;
 
-  override enable(): void {
-    console.log(
-      `Extension ${this.metadata.uuid} enabling, monkey-patching extension Main.extensionManager.updatesSupported to disable automatic updates`,
-    );
+  /**
+   * Create a new enabled extension.
+   *
+   * @param metadata The extension metadata
+   */
+  constructor(metadata: ExtensionMetadata) {
+    this.metadata = metadata;
+  }
+
+  /**
+   * Patch the extension manager.
+   *
+   * We patch actual extension manager instance used by GNOME shell.  We install
+   * a new "updatesSupported" property directly on this instance object which
+   * always returns false and logs that our extension intercepted the update
+   * check.  This shadows the original property definition on the
+   * ExtensionManager prototype and thus intercepts all access to
+   * "Main.extensionManager.updatesEnabled" which is the only way the rest of
+   * the shell uses this property as there's only a single ExtensionManager
+   * instance in GNOME shell.
+   *
+   * Since the original property descriptor on the ExtensionManager prototype
+   * is left intact we can restore the old behaviour by simply deleting the
+   * property on the instance object; then the property definition on the
+   * prototype will take over again.
+   */
+  patchExtensionManager() {
     this.propertyManager.defineProperty(
       Main.extensionManager,
       "updatesSupported",
@@ -98,10 +122,42 @@ export default class DisableUpdatesExtension extends Extension {
     );
   }
 
-  override disable(): void {
-    console.log(
-      `Extension ${this.metadata.uuid} disabled, resetting monkey-patched properties`,
-    );
+  /**
+   * Destroy this extension state.
+   *
+   * We simply clear the patched properties, i.e. delete the property on the
+   * instance object that we patched in, so that the original property
+   * definition on the prototype will take over again.
+   */
+  destroy() {
     this.propertyManager.clear();
+  }
+}
+
+/**
+ * Disable extension updates with some monkey-patching trickery.
+ */
+export default class DisableUpdatesExtension extends Extension {
+  private extensionState?: EnabledExtension | null;
+
+  override enable(): void {
+    if (!this.extensionState) {
+      console.log(
+        `Extension ${this.metadata.uuid} enabling, monkey-patching extension Main.extensionManager.updatesSupported to disable automatic updates`,
+      );
+this.extensionState = new EnabledExtension(this.metadata);
+this.extensionState.patchExtensionManager();
+    }
+
+  }
+
+  override disable(): void {
+    if (this.extensionState) {
+      console.log(
+        `Extension ${this.metadata.uuid} disabled, resetting monkey-patched properties`,
+      );
+      this.extensionState.destroy();
+      this.extensionState = null;
+    }
   }
 }
