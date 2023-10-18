@@ -11,7 +11,9 @@ would really appreciate contributions here.
 
 ## Installation
 
-Download the latest ZIP file from [releases](https://github.com/swsnr/gnome-shell-extension-disable-extension-updates/releases),
+Install from [extensions.gnome.org](https://extensions.gnome.org/extension/6424/disable-extension-updates/).
+
+Or download the latest ZIP file from [releases](https://github.com/swsnr/gnome-shell-extension-disable-extension-updates/releases),
 and install with
 
 ```console
