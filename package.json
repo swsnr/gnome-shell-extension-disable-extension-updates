@@ -1,17 +1,5 @@
 {
-  "name": "gnome-shell-extension-disable-extension-updates",
-  "version": "1.0.0",
-  "description": "GNOME shell extension to disable automatic extension update check",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/swsnr/gnome-shell-extension-disable-extension-updates.git"
-  },
-  "author": "Sebastian Wiesner <sebastian@swsnr.de>",
   "license": "GPL-2.0-or-later OR MPL-2.0",
-  "bugs": {
-    "url": "https://github.com/swsnr/gnome-shell-extension-disable-extension-updates/issues"
-  },
-  "homepage": "https://github.com/swsnr/gnome-shell-extension-disable-extension-updates#readme",
   "type": "module",
   "private": true,
   "scripts": {
