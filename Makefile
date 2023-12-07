@@ -33,6 +33,7 @@ compile:
 .PHONY: dist
 dist: compile
 	mkdir -p ./dist/
+	npm run dist:format
 	gnome-extensions pack --force --out-dir dist \
 		$(addprefix --extra-source=,$(DIST-EXTRA-SRC))
 
