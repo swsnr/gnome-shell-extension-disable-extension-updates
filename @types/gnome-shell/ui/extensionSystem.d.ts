@@ -18,7 +18,7 @@
 // GNU General Public License for more details.
 
 export declare class ExtensionManager {
-    constructor();
+  constructor();
 
-    get updatesSupported(): boolean;
+  get updatesSupported(): boolean;
 }

@@ -1,3 +1,13 @@
+# Generated code
 /@types/gir-generated/*
-*.js
-!/.ts-for-girrc.js
+
+# Leave markdown files and icon files alone
+*.md
+/icon/
+
+# npm configuration and packages
+/package.json
+/node_modules/
+
+# Compiled extension file
+/extension.js

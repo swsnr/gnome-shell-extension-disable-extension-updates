@@ -2,7 +2,6 @@ module.exports = {
   extends: [
     "eslint:recommended",
     ".eslintrc.gjs-guide.yml",
-    "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/strict-type-checked",
     "plugin:@typescript-eslint/stylistic-type-checked",
     "plugin:promise/recommended",
@@ -24,5 +23,12 @@ module.exports = {
     "functional/no-expression-statements": ["off"],
   },
   // These are either generated or config files or no real typescript
-  ignorePatterns: ["*.js", "*.cjs", "*.d.ts"],
+  ignorePatterns: [
+    // Build outputs
+    "/extension.js",
+    // NPM modules
+    "/node_modules/**/*",
+    // Generated code
+    "/@types/gir-generated/**/*",
+  ],
 };
