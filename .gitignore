@@ -1,5 +1,6 @@
-/node_modules/
-
+# Yarn things
+/.yarn/
+/.pnp.*
 
 # Extension artifact
 /dist/

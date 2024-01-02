@@ -5,9 +5,10 @@
 *.md
 /icon/
 
-# npm configuration and packages
+# Yarn things
 /package.json
-/node_modules/
+/.yarn/
+/.pnp.*
 
 # Compiled extension file
 /extension.js

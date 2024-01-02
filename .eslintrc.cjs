@@ -26,8 +26,9 @@ module.exports = {
   ignorePatterns: [
     // Build outputs
     "/extension.js",
-    // NPM modules
-    "/node_modules/**/*",
+    // Yarn things
+    "/.yarn/",
+    "/.pnp.*",
     // Generated code
     "/@types/gir-generated/**/*",
   ],
