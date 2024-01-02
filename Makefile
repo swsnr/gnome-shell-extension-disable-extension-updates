@@ -6,10 +6,6 @@ UUID = disable-extension-updates@swsnr.de
 
 DIST-EXTRA-SRC = LICENSE-GPL2 LICENSE-MPL2
 
-.PHONY: generate
-generate:
-	yarn generate:gir-types
-
 .PHONY: format
 format:
 	yarn format --write

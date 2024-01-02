@@ -29,7 +29,5 @@ module.exports = {
     // Yarn things
     "/.yarn/",
     "/.pnp.*",
-    // Generated code
-    "/@types/gir-generated/**/*",
   ],
 };
