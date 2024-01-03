@@ -54,9 +54,9 @@ class PropertyManager implements Destructible {
    * @param key The property key
    * @param descriptor The property descriptor
    */
-  defineProperty(
-    object: unknown,
-    key: PropertyKey,
+  defineProperty<O>(
+    object: O,
+    key: keyof O,
     descriptor: PropertyDescriptor,
   ): void {
     this.trackedProperties.push({ object, key });
