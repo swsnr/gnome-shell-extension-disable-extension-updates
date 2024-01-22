@@ -6,7 +6,7 @@
     "moduleResolution": "NodeNext",
     "lib": ["ES2022"],
     "removeComments": false,
-    "skipLibCheck": true
+    "skipLibCheck": true,
   },
-  "files": ["gnome-shell.d.ts", "extension.ts"]
+  "files": ["gnome-shell.d.ts", "extension.ts"],
 }
