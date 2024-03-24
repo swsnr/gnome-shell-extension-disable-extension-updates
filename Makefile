@@ -41,8 +41,7 @@ dist-repro: dist
 # Install to local home directory; this simply unpacks the zip file as GNOME would do
 .PHONY: install-home
 install-home: dist
-	mkdir -p $(HOME-DESTDIR)
-	bsdtar -xf dist/$(UUID).shell-extension.zip -C $(HOME-DESTDIR) --no-same-owner
+	gnome-extensions install -f dist/$(UUID).shell-extension.zip
 
 .PHONY: uninstall-home
 uninstall-home:
