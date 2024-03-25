@@ -5,10 +5,10 @@
 *.md
 /icon/
 
-# Yarn things
+# Package things
 /package.json
-/.yarn/
-/.pnp.*
+/node_modules/
+/pnpm-lock.yaml
 
 # Compiled extension file
 /extension.js

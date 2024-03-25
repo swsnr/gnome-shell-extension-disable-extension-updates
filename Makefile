@@ -8,28 +8,28 @@ DIST-EXTRA-SRC = LICENSE-GPL2 LICENSE-MPL2
 
 .PHONY: format
 format:
-	yarn format --write
+	pnpm format --write
 
 .PHONY: lint
 lint:
-	yarn lint
+	pnpm lint
 
 .PHONY: check
 check: lint
-	yarn format --check
+	pnpm format --check
 
 .PHONY: fix
 fix: format
-	yarn lint --fix
+	pnpm lint --fix
 
 .PHONY: compile
 compile:
-	yarn compile
+	pnpm compile
 
 .PHONY: dist
 dist: compile
 	mkdir -p ./dist/
-	yarn dist:format
+	pnpm dist:format
 	gnome-extensions pack --force --out-dir dist \
 		$(addprefix --extra-source=,$(DIST-EXTRA-SRC))
 

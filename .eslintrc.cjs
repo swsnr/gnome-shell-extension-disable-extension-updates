@@ -26,8 +26,7 @@ module.exports = {
   ignorePatterns: [
     // Build outputs
     "/extension.js",
-    // Yarn things
-    "/.yarn/",
-    "/.pnp.*",
+    // Packages
+    "/node_modules/",
   ],
 };
