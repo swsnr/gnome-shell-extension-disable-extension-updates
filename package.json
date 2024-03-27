@@ -9,7 +9,7 @@
     "format": "prettier ."
   },
   "devDependencies": {
-    "@girs/gjs": "^3.2.9",
+    "@girs/gjs": "^3.3.0",
     "@girs/gnome-shell": "^46.0.0-beta1",
     "@tsconfig/strictest": "^2.0.4",
     "@typescript-eslint/eslint-plugin": "^7.3.1",

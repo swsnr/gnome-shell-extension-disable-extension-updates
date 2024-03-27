@@ -6,8 +6,8 @@ settings:
 
 devDependencies:
   '@girs/gjs':
-    specifier: ^3.2.9
-    version: 3.2.9
+    specifier: ^3.3.0
+    version: 3.3.0
   '@girs/gnome-shell':
     specifier: ^46.0.0-beta1
     version: 46.0.0-beta1
@@ -284,13 +284,6 @@ packages:
       '@girs/gobject-2.0': 2.78.0-3.3.0
     dev: true
 
-  /@girs/gjs@3.2.9:
-    resolution: {integrity: sha512-dJfCNdtt4OLRywlhKOc+h27l5KoOiDhbhkuuG/WaV/jn9KaQ1BMAyVWdBEZu6WzPJlsiWYujis0fe5ZJnrgoDA==}
-    dependencies:
-      '@girs/glib-2.0': 2.78.0-3.2.9
-      '@girs/gobject-2.0': 2.78.0-3.2.9
-    dev: true
-
   /@girs/gjs@3.3.0:
     resolution: {integrity: sha512-5cQaouORn53vLM+cFAEOzJuzcm47eH86R2OGUgrHIL4KT7sEm+BKkhqlI67m+iJUMl/I72P2Hfe+Am4jl0YxlQ==}
     dependencies:
@@ -303,13 +296,6 @@ packages:
     dependencies:
       '@girs/gjs': 3.3.0
       '@girs/gobject-2.0': 2.78.0-3.3.0
-    dev: true
-
-  /@girs/glib-2.0@2.78.0-3.2.9:
-    resolution: {integrity: sha512-wcbnSojav6jc4//PYsAJPwXizFlz35/F+AHyFbvutOSdNz4xzzUUZqUhhH2lmoyR8WDvkVWBcQitCmYmPNe6Xg==}
-    dependencies:
-      '@girs/gjs': 3.2.9
-      '@girs/gobject-2.0': 2.78.0-3.2.9
     dev: true
 
   /@girs/glib-2.0@2.78.0-3.3.0:
@@ -394,13 +380,6 @@ packages:
       '@girs/glib-2.0': 2.78.0-3.3.0
       '@girs/gmodule-2.0': 2.0.0-3.3.0
       '@girs/gobject-2.0': 2.78.0-3.3.0
-    dev: true
-
-  /@girs/gobject-2.0@2.78.0-3.2.9:
-    resolution: {integrity: sha512-zszoqx7/z7KseQnc7WUXz1jgs3oYskT748cMKLQ7n4pRtL6klrTzlPbM42Szs+Uk6wOKJ+o+MMdcpb8znflDBg==}
-    dependencies:
-      '@girs/gjs': 3.2.9
-      '@girs/glib-2.0': 2.78.0-3.2.9
     dev: true
 
   /@girs/gobject-2.0@2.78.0-3.3.0:
