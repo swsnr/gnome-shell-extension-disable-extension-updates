@@ -1,3 +1,6 @@
+# Ignore vscode stuff
+/.vscode/
+
 # Packages
 /node_modules/
 
