@@ -8,4 +8,4 @@
 /dist/
 
 # Build outputs
-*.js
+/extension.js
