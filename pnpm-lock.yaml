@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@girs/gjs':
-        specifier: ^3.3.0
-        version: 3.3.0
+        specifier: ^4.0.0-beta.14
+        version: 4.0.0-beta.14
       '@girs/gnome-shell':
         specifier: ^46.0.2
         version: 46.0.2
@@ -120,17 +120,11 @@ packages:
   '@girs/gio-2.0@2.80.3-4.0.0-beta.14':
     resolution: {integrity: sha512-ZPcUYDJOTf1z1xN0nGGZEgUzAGl6ZxTeJFH5nTaILmnYpnHR50EG+5YzGi+PUwQzuafMYj6KkHXh9HW4723ctw==}
 
-  '@girs/gjs@3.3.0':
-    resolution: {integrity: sha512-5cQaouORn53vLM+cFAEOzJuzcm47eH86R2OGUgrHIL4KT7sEm+BKkhqlI67m+iJUMl/I72P2Hfe+Am4jl0YxlQ==}
-
   '@girs/gjs@4.0.0-beta.14':
     resolution: {integrity: sha512-80uV5SGGN7JxXWV3BRlJRSQ2eoOYZvJqJ5/507XXMhGBMOnxv4PIZcmTYNsEBqpWSr8n9mtCuNFxdRuikbpnUg==}
 
   '@girs/gl-1.0@1.0.0-4.0.0-beta.14':
     resolution: {integrity: sha512-kXDpDZ3n2QBWlz2YY3UqDUhVCKO/n9ARBEPCLSJerTY0fsypfkbMgSNX+Unytahmmdmyz6DGmObkiyCG6YraVQ==}
-
-  '@girs/glib-2.0@2.78.0-3.3.0':
-    resolution: {integrity: sha512-XuoKuOm9aNVou+yWtlbcwEcNI7v1gCJUBQboPlZxft+o9CnP2FmwRntqZnfhZepGmLbASMA8Ow5iEL8glNwVsw==}
 
   '@girs/glib-2.0@2.80.3-4.0.0-beta.14':
     resolution: {integrity: sha512-RCXtrsYjRXhPHfT0DVAG5T2ns+KjyJzpNxhECyr1C1nGq6tCnyGHrtIJ8NrVOA19yDKs7HVKRE1rROBrLglRDw==}
@@ -149,9 +143,6 @@ packages:
 
   '@girs/gnomedesktop-4.0@4.0.0-4.0.0-beta.14':
     resolution: {integrity: sha512-cQBgic3iPlZ0T2fbSfeKmIfvp5/kbvkmgqc4RJ9k45OVHVRtSL+4ccePGDqV6PBu06mXzJ1PJQUacCQ43S0c/w==}
-
-  '@girs/gobject-2.0@2.78.0-3.3.0':
-    resolution: {integrity: sha512-s6IpE1o9uAf8kZgncWjdYerErhWXgszIFHXEvvyKR8csI36SFD730CqJRiCepP2okoJmD0Vi3jrnuq5jb8wIMA==}
 
   '@girs/gobject-2.0@2.80.3-4.0.0-beta.14':
     resolution: {integrity: sha512-2yJcCmf0vGG1hHI286C6opegSO03fPeg4t3pRbc2fl3u5cx+lLKRvbA85ZzL8qpFicxRLrkWjaQEWcV8y+3zfA==}
@@ -908,11 +899,6 @@ snapshots:
       '@girs/gmodule-2.0': 2.0.0-4.0.0-beta.14
       '@girs/gobject-2.0': 2.80.3-4.0.0-beta.14
 
-  '@girs/gjs@3.3.0':
-    dependencies:
-      '@girs/glib-2.0': 2.78.0-3.3.0
-      '@girs/gobject-2.0': 2.78.0-3.3.0
-
   '@girs/gjs@4.0.0-beta.14':
     dependencies:
       '@girs/cairo-1.0': 1.0.0-4.0.0-beta.14
@@ -924,11 +910,6 @@ snapshots:
     dependencies:
       '@girs/gjs': 4.0.0-beta.14
       '@girs/gobject-2.0': 2.80.3-4.0.0-beta.14
-
-  '@girs/glib-2.0@2.78.0-3.3.0':
-    dependencies:
-      '@girs/gjs': 3.3.0
-      '@girs/gobject-2.0': 2.78.0-3.3.0
 
   '@girs/glib-2.0@2.80.3-4.0.0-beta.14':
     dependencies:
@@ -1002,11 +983,6 @@ snapshots:
       '@girs/glib-2.0': 2.80.3-4.0.0-beta.14
       '@girs/gmodule-2.0': 2.0.0-4.0.0-beta.14
       '@girs/gobject-2.0': 2.80.3-4.0.0-beta.14
-
-  '@girs/gobject-2.0@2.78.0-3.3.0':
-    dependencies:
-      '@girs/gjs': 3.3.0
-      '@girs/glib-2.0': 2.78.0-3.3.0
 
   '@girs/gobject-2.0@2.80.3-4.0.0-beta.14':
     dependencies:
