@@ -47,16 +47,11 @@ install-home: dist
 uninstall-home:
 	rm -rf $(HOME-DESTDIR)
 
-# Install system wide, moving various parts to appropriate system directories
+# Install as a system-wide installation schema, into a separate directory
+# Intended for distribution packaging
 .PHONY: install-system
 install-system: dist
 	install -d \
-		$(DESTDIR)/$(PREFIX)/share/gnome-shell/extensions/$(UUID) \
-		$(DESTDIR)/$(PREFIX)/share/glib-2.0/schemas
+		$(DESTDIR)/$(PREFIX)/share/gnome-shell/extensions/$(UUID)
 	bsdtar -xf dist/$(UUID).shell-extension.zip \
 		-C $(DESTDIR)/$(PREFIX)/share/gnome-shell/extensions/$(UUID) --no-same-owner
-
-.PHONY: uninstall-system
-uninstall-system:
-	rm -rf \
-		$(DESTDIR)/$(PREFIX)/share/gnome-shell/extensions/$(UUID) \
