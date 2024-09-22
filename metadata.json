@@ -3,8 +3,8 @@
   "uuid": "disable-extension-updates@swsnr.de",
   "description": "Disable automatic extension updates in GNOME\n\nThis extension patches GNOME Shell to entirely disable updates of user-installed extensions.",
   "url": "https://github.com/swsnr/gnome-shell-extension-disable-extension-updates",
-  "shell-version": ["46", "47"],
-  "version-name": "46.2",
+  "shell-version": ["47"],
+  "version-name": "47.0-dev",
   "donations": {
     "paypal": "swsnr"
   }
