@@ -9,3 +9,6 @@
 
 # Build outputs
 /extension.js
+
+# Typescript build info
+/*.tsbuildinfo
