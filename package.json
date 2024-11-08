@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "compile": "tsc --build tsconfig.json",
-    "dist:format": "eslint --no-config-lookup --config eslint.config.dist.js --quiet --fix extension.js",
+    "postcompile": "eslint --no-config-lookup --config eslint.config.dist.js --quiet --fix .",
+    "prepack": "pnpm run compile",
+    "pack": "gsebuild pack",
+    "clean": "rimraf --no-interactive extension.js dist",
     "lint": "eslint .",
     "format": "prettier ."
   },
@@ -15,11 +18,16 @@
   "devDependencies": {
     "@girs/gjs": "^4.0.0-beta.17",
     "@girs/gnome-shell": "^47.0.0",
-    "@tsconfig/strictest": "^2.0.5",
+    "@swsnr/gsebuild": "0.0.5",
     "eslint": "^9.13.0",
     "eslint-config-prettier": "^9.1.0",
     "prettier": "^3.3.3",
-    "typescript": "^5.6.3",
-    "typescript-eslint": "^8.12.2"
+    "rimraf": "^6.0.1",
+    "typescript": "^5.6.3"
+  },
+  "gsebuild": {
+    "pack": {
+      "extra-sources": ["LICENSE*", "README.md"]
+    }
   }
 }

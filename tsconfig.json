@@ -1,12 +1,4 @@
 {
-  "extends": "@tsconfig/strictest/tsconfig.json",
-  "compilerOptions": {
-    "target": "ES2022",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "lib": ["ES2022"],
-    "removeComments": false,
-    "skipLibCheck": true
-  },
+  "extends": "@swsnr/gsebuild/tsconfig.json",
   "files": ["gnome-shell.d.ts", "extension.ts"]
 }
