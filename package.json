@@ -5,20 +5,18 @@
   "scripts": {
     "compile": "tsc --build tsconfig.json",
     "postcompile": "eslint --no-config-lookup --config eslint.config.dist.js --quiet --fix .",
-    "prepack": "pnpm run compile",
+    "prepack": "npm run compile",
     "pack": "gsebuild pack",
     "clean": "rimraf --no-interactive extension.js dist",
     "lint": "eslint .",
     "format": "prettier ."
   },
   "engines": {
-    "node": ">=20",
-    "pnpm": "^9"
+    "node": ">=23"
   },
   "devDependencies": {
-    "@girs/gjs": "^4.0.0-beta.17",
     "@girs/gnome-shell": "^47.0.0",
-    "@swsnr/gsebuild": "0.0.5",
+    "@swsnr/gsebuild": "^0.0.6",
     "eslint": "^9.13.0",
     "eslint-config-prettier": "^9.1.0",
     "prettier": "^3.3.3",
