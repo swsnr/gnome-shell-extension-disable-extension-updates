@@ -17,7 +17,7 @@
   "devDependencies": {
     "@girs/gnome-shell": "^47.0.0",
     "@swsnr/gsebuild": "^0.1.2",
-    "eslint": "^9.13.0",
+    "eslint": "^9.16.0",
     "eslint-config-prettier": "^9.1.0",
     "prettier": "^3.4.1",
     "rimraf": "^6.0.1",
