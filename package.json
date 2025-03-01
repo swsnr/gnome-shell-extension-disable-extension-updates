@@ -19,7 +19,7 @@
     "@swsnr/gsebuild": "^0.1.2",
     "eslint": "^9.21.0",
     "eslint-config-prettier": "^10.0.2",
-    "prettier": "^3.4.2",
+    "prettier": "^3.5.2",
     "rimraf": "^6.0.1",
     "typescript": "^5.8.2"
   },
