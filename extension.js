@@ -66,10 +66,11 @@ export class DestructibleExtension extends Extension {
    * @override
    */
   enable() {
+    const log = this.getLogger();
     if (!this.#enabledExtension) {
-      console.log(`Enabling extension ${this.metadata.uuid} ${this.version}`);
+      log.log(`Enabling extension ${this.metadata.uuid} ${this.version}`);
       this.#enabledExtension = this.initialize();
-      console.log(
+      log.log(
         `Extension ${this.metadata.uuid} ${this.version} successfully enabled`,
       );
     }
@@ -83,7 +84,9 @@ export class DestructibleExtension extends Extension {
    * @override
    */
   disable() {
-    console.log(`Disabling extension ${this.metadata.uuid} ${this.version}`);
+    this.getLogger().log(
+      `Disabling extension ${this.metadata.uuid} ${this.version}`,
+    );
     this.#enabledExtension?.destroy();
     this.#enabledExtension = null;
   }
@@ -115,11 +118,12 @@ export default class DisableUpdatesExtension extends DestructibleExtension {
    * @override
    */
   initialize() {
+    const log = this.getLogger();
     Object.defineProperty(Main.extensionManager, "updatesSupported", {
       // We must enforce that the property be configurable; otherwise we can't delete it again
       configurable: true,
       get: () => {
-        console.log(`Extension updates disabled by ${this.metadata.uuid}`);
+        log.log(`Extension updates disabled by ${this.metadata.uuid}`);
         return false;
       },
     });
