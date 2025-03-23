@@ -1,14 +1,8 @@
-# Ignore vscode stuff
-/.vscode/
-
 # Packages
 /node_modules/
 
 # Extension artifact
-/dist/
+/*.shell-extension.zip
 
-# Build outputs
-/extension.js
-
-# Typescript build info
-/*.tsbuildinfo
+# Editor things
+/.vscode/
