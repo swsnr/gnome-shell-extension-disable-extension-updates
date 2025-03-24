@@ -25,74 +25,6 @@ import { Extension } from "resource:///org/gnome/shell/extensions/extension.js";
 import * as Main from "resource:///org/gnome/shell/ui/main.js";
 
 /**
- * An abstract class representing a destructible extension.
- *
- * This class handles the infrastructure for enabling and disabling the
- * extension; implementations only need to provide initialization.
- *
- * @typedef {{destroy: () => void}} Destructible
- */
-export class DestructibleExtension extends Extension {
-  /**
-   * Destructible for the enabled extension, or null if the extension is not enabled.
-   *
-   * @type {Destructible | null}
-   */
-  #enabledExtension = null;
-
-  /**
-   * The version of this extension, as extracted from metadata.
-   *
-   * @type {string}
-   */
-  get version() {
-    return this.metadata["version-name"] ?? "n/a";
-  }
-
-  /**
-   * Initialize this extension.
-   *
-   * @return {Destructible} An object to destroy when tearing down the extension.
-   */
-  initialize() {
-    throw new Error("Must implement initialize");
-  }
-
-  /**
-   * Enable this extension.
-   *
-   * If not already enabled, call `initialize` and keep track its allocated resources.
-   *
-   * @override
-   */
-  enable() {
-    const log = this.getLogger();
-    if (!this.#enabledExtension) {
-      log.log(`Enabling extension ${this.metadata.uuid} ${this.version}`);
-      this.#enabledExtension = this.initialize();
-      log.log(
-        `Extension ${this.metadata.uuid} ${this.version} successfully enabled`,
-      );
-    }
-  }
-
-  /**
-   * Disable this extension.
-   *
-   * If existing, destroy the allocated resources of `initialize`.
-   *
-   * @override
-   */
-  disable() {
-    this.getLogger().log(
-      `Disabling extension ${this.metadata.uuid} ${this.version}`,
-    );
-    this.#enabledExtension?.destroy();
-    this.#enabledExtension = null;
-  }
-}
-
-/**
  * Disable extension updates with some monkey-patching trickery.
  *
  * We patch actual extension manager instance used by GNOME shell.  We install
@@ -113,11 +45,24 @@ export class DestructibleExtension extends Extension {
  * i.e. delete the property on the instance object that we patched in, so that
  * the original property definition on the prototype will take over again.
  */
-export default class DisableUpdatesExtension extends DestructibleExtension {
+export default class DisableUpdatesExtension extends Extension {
   /**
-   * @override
+   * Destructible for the enabled extension, or null if the extension is not enabled.
+   *
+   * @type {{destroy: () => void} | null}
    */
-  initialize() {
+  #enabledExtension = null;
+
+  /**
+   * The version of this extension, as extracted from metadata.
+   *
+   * @type {string}
+   */
+  get version() {
+    return this.metadata["version-name"] ?? "n/a";
+  }
+
+  #initialize() {
     const log = this.getLogger();
     Object.defineProperty(Main.extensionManager, "updatesSupported", {
       // We must enforce that the property be configurable; otherwise we can't delete it again
@@ -134,5 +79,33 @@ export default class DisableUpdatesExtension extends DestructibleExtension {
         delete Main.extensionManager["updatesSupported"];
       },
     };
+  }
+
+  /**
+   * Enable this extension.
+   *
+   * @override
+   */
+  enable() {
+    const log = this.getLogger();
+    if (!this.#enabledExtension) {
+      log.log(`Enabling extension ${this.metadata.uuid} ${this.version}`);
+      this.#enabledExtension = this.#initialize();
+    }
+  }
+
+  /**
+   * Disable this extension.
+   *
+   * If existing, destroy the allocated resources of `initialize`.
+   *
+   * @override
+   */
+  disable() {
+    this.getLogger().log(
+      `Disabling extension ${this.metadata.uuid} ${this.version}`,
+    );
+    this.#enabledExtension?.destroy();
+    this.#enabledExtension = null;
   }
 }
