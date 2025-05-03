@@ -13,12 +13,14 @@ would really appreciate contributions here.
 
 Install from [extensions.gnome.org](https://extensions.gnome.org/extension/6424/disable-extension-updates/).
 
-Or download the latest ZIP file from [releases](https://github.com/swsnr/gnome-shell-extension-disable-extension-updates/releases),
+Or download the latest ZIP file from [releases](https://codeberg.org/swsnr/gnome-shell-extension-disable-extension-updates/releases),
 and install with
 
 ```console
 $ gnome-extensions install disable-extension-updates@swsnr.de.shell-extension.zip
 ```
+
+Release artifacts are signed with my Codeberg SSH keys from <https://codeberg.org/swsnr.keys>.
 
 ## License
 
