@@ -8,6 +8,7 @@ test-all:
     npx prettier --check .
 
 pack:
+    rm -f disable-extension-updates@swsnr.de.shell-extension.zip disable-extension-updates@swsnr.de.shell-extension.zip.sig
     gnome-extensions pack --force --extra-source LICENSE-GPL2 --extra-source LICENSE-MPL2
     # Get my codeberg SSH key for signing the artifacts
     curl https://codeberg.org/swsnr.keys > key
