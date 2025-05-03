@@ -4,7 +4,7 @@
   "description": "Disable automatic extension updates in GNOME\n\nThis extension patches GNOME Shell to entirely disable updates of user-installed extensions.",
   "url": "https://codeberg.org/swsnr/gnome-shell-extension-disable-extension-updates",
   "shell-version": ["48"],
-  "version-name": "48.1",
+  "version-name": "48.2",
   "donations": {
     "paypal": "swsnr"
   }
