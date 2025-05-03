@@ -24,5 +24,6 @@ release VERSION: ensure-repo-clean
     git commit -m 'Release {{VERSION}}'
     git tag -a -s 'v{{VERSION}}'
     just pack
+    git push --follow-tags main
     echo "Upload zip to https://extensions.gnome.org"
     echo "Create a new codeberg release at https://codeberg.org/swsnr/gnome-shell-extension-disable-extension-updates/releases/new?tag=v{{VERSION}}"
