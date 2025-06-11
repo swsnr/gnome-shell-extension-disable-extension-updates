@@ -9,7 +9,7 @@ test-all:
 
 pack:
     rm -f disable-extension-updates@swsnr.de.shell-extension.zip disable-extension-updates@swsnr.de.shell-extension.zip.sig
-    gnome-extensions pack --force --extra-source LICENSE-GPL2 --extra-source LICENSE-MPL2
+    gnome-extensions pack --force --extra-source LICENSE
     # Get my codeberg SSH key for signing the artifacts
     curl https://codeberg.org/swsnr.keys > key
     ssh-keygen -Y sign -f key -n file disable-extension-updates@swsnr.de.shell-extension.zip
