@@ -20,7 +20,7 @@ ensure-repo-clean:
     git diff-index --quiet HEAD
 
 release VERSION: ensure-repo-clean
-    sed -i 's/"version-name": .*,/"version-name": "{{VERSION}}",/' metadata.json
+    sed -i 's/"version-name": .*/"version-name": "{{VERSION}}"/' metadata.json
     git add metadata.json
     git commit -m 'Release {{VERSION}}'
     git tag -a -s 'v{{VERSION}}'
