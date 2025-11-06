@@ -46,6 +46,7 @@ export default class DisableUpdatesExtension extends Extension {
    * @type {string}
    */
   get version() {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return this.metadata["version-name"] ?? "n/a";
   }
 
