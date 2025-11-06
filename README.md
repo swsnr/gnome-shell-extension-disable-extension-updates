@@ -20,7 +20,7 @@ and install with
 $ gnome-extensions install disable-extension-updates@swsnr.de.shell-extension.zip
 ```
 
-Alternatively, install from [extensions.gnome.org](https://extensions.gnome.org/extension/6424/disable-extension-updates/), but note that releases on extensions.gnome.org may be delayed or outright rejected by its mandatory review process. 
+Alternatively, install from [extensions.gnome.org](https://extensions.gnome.org/extension/6424/disable-extension-updates/), but note that releases on extensions.gnome.org may be delayed or outright rejected by its mandatory review process.
 The author of this extension does not use extensions.gnome.org.
 
 ## License
