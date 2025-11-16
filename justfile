@@ -6,6 +6,7 @@ test-all:
     npx tsc --project .
     npx eslint .
     npx prettier --check .
+    npm audit
 
 pack:
     rm -f disable-extension-updates@swsnr.de.shell-extension.zip disable-extension-updates@swsnr.de.shell-extension.zip.sig
