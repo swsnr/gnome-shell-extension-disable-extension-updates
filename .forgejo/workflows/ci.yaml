@@ -6,8 +6,13 @@ on:
 
 jobs:
   test-all:
-    runs-on: swsnr-npm
+    runs-on: codeberg-tiny-lazy
     steps:
       - uses: actions/checkout@v5
-      - run: just test-all
+      - uses: actions/setup-node@v6
+      - run: npm ci
+      - run: npx tsc --project .
+      - run: npx eslint .
+      - run: npx prettier --check .
+      - run: npm audit
       - run: npm outdated
