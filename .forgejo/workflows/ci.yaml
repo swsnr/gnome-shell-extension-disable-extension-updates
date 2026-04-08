@@ -5,7 +5,7 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  test-all:
+  test:
     runs-on: codeberg-tiny-lazy
     steps:
       - uses: actions/checkout@v5
